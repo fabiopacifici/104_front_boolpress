@@ -1,25 +1,62 @@
 // 0.Import the createWebHashHistory and createRouter from vue-router
-import { createWebHashHistory, createRouter  } from "vue-router";
+import { createWebHashHistory, createRouter } from "vue-router";
 
 // 1. Define route components.
 import HomeView from "./views/HomeView.vue";
 import BlogView from "./views/BlogView.vue";
 import SingleBlogPostView from "./views/SingleBlogPostView.vue";
+import SingleCategoryView from "./views/SingleCategoryView.vue";
+import SingleTagView from "./views/SingleTagView.vue";
 import AboutView from "./views/AboutView.vue";
 import ContactsView from "./views/ContactsView.vue";
-
+import NotFoundView from './views/NotFoundView.vue';
 
 // 2. Define some routes
 const routes = [
-  { path: '/', component: HomeView },
-  { path: '/about', component: AboutView },
-  { path: '/blog', component: BlogView },
-  { 
-    path: '/blog/:slug', 
-    name: 'post',
-    component: SingleBlogPostView 
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
   },
-  { path: '/contacts', component: ContactsView },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView
+  },
+
+  {
+    path: '/blog',
+    name: 'blog',
+    component: BlogView
+  },
+  {
+    path: '/blog/:slug',
+    name: 'post',
+    component: SingleBlogPostView
+  },
+
+  {
+    path: '/categories/:slug',
+    name: 'category',
+    component: SingleCategoryView
+  },
+
+  {
+    path: '/tags/:slug',
+    name: 'tag',
+    component: SingleTagView
+  },
+  {
+    path: '/contacts',
+    name: 'contacts',
+    component: ContactsView
+  },
+
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFoundView
+  },
 
 ];
 
@@ -31,4 +68,4 @@ const router = createRouter({
 });
 
 // export the vue router instance
-export {router}
+export { router }

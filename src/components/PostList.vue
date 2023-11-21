@@ -1,10 +1,15 @@
 <script>
 import axios from 'axios';
+import {state} from '../state.js';
+import PostCard from './PostCard.vue';
 export default {
   name: 'PostList',
+  components: {
+    PostCard
+  },
   data() {
     return {
-      base_url: 'http://127.0.0.1:8002',
+      state,
       blog_api: '/api/posts',
       posts: null,
 
@@ -12,7 +17,8 @@ export default {
   },
   methods: {
     getPosts() {
-      const url = this.base_url + this.blog_api;
+      const url = this.state.base_url + this.blog_api;
+      console.log(url)
       axios
         .get(url)
         .then(response => {
@@ -42,22 +48,12 @@ export default {
     <section class="posts" v-if="posts">
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-          <div class="col" v-for="post in posts.data">
-            <div class="card">
-              <img :src="base_url + '/storage/' + post.cover_image" alt="">
 
-              <div class="card-body">
-                <h4 class="card-title">{{ post.title }}</h4>
-                <p class="card-text">
-                  {{ post.content }}
-                </p>
-              </div>
-              <div class="card-footer">
-                <router-link :to="{ name: 'post', params: { slug: post.slug }}">View Post</router-link>
 
-              </div>
-            </div>
-          </div>
+          
+          <post-card :post="post" v-for="post in posts.data"></post-card>
+
+
         </div>
       </div>
       <div class="container">

@@ -33,7 +33,7 @@ export default {
             </li>
           </ul>
           <div class="admin">
-            <a href="http://127.0.0.1:8001/admin" class="btn" target="__blank">
+            <a href="http://127.0.0.1:8002/admin" class="btn" target="__blank">
               Admin <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -50,7 +50,7 @@ export default {
 
   </header>
 
-  <main class="py-4">
+  <main>
 
     <router-view></router-view>
 
